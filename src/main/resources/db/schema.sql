@@ -16,3 +16,15 @@ CREATE TABLE `user` (
 ALTER TABLE `user` ADD UNIQUE (`username`);
 ALTER TABLE `user` ADD UNIQUE (`email`);
 ALTER TABLE `user` ADD UNIQUE (`phone`);
+
+DROP TABLE IF EXISTS`hospital`;
+CREATE TABLE `hospital` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL comment '姓名',
+  `phone` varchar(50) DEFAULT NULL,
+  `register_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `enabled` tinyint(1) DEFAULT 1,
+  `doctor` varchar(50) DEFAULT NULL comment '主治医生',
+  `disease` varchar(5000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
