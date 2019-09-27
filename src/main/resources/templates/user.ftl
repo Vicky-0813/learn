@@ -1,6 +1,6 @@
 <html>
 <head></head>
 <body>
-<h1>welcome ${user.username} !</h1><br> 
+<h1>welcome ${hospital.name} !</h1><br> 
 </body>
 </html>

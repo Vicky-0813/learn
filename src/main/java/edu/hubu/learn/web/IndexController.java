@@ -7,6 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.hubu.learn.entity.User;
 import edu.hubu.learn.service.UserService;
+import edu.hubu.learn.entity.Hospital;
+import edu.hubu.learn.service.HospitalService;
 
 @Controller
 @RequestMapping("/")
@@ -14,6 +16,8 @@ public class IndexController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private HospitalService hospitalService;
 
     @RequestMapping("/")
     public ModelAndView index() {
@@ -30,4 +34,15 @@ public class IndexController {
         mav.setViewName("user");
         return mav;
     }
+    
+    @RequestMapping("/hospital")
+    public ModelAndView hospital() {
+        ModelAndView mav = new ModelAndView();
+        Hospital hospital = hospitalService.getHospital(1l);
+        mav.addObject("hospital", hospital);
+        mav.setViewName("user");
+        return mav;
+    }
+       
 }
+
