@@ -19,4 +19,7 @@ public class HospitalService {
     public List<Hospital> getHospitals(){
         return hospitalDao.findAll();
     }
+    public Hospital addHospital(Hospital hospital) {
+        return hospitalDao.save(hospital);
+    }
 }

@@ -39,4 +39,17 @@ public class HospitalController {
         return mav;
     }
 
+    @RequestMapping("/add")
+    public ModelAndView addHospital() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("hospital_add");
+        return mav;
+    }
+
+    @RequestMapping("/do_add")
+    public ModelAndView doAddHospital(Hospital hospital) {
+        hospitalService.addHospital(hospital);
+        ModelAndView mav = new ModelAndView("redirect:/hospital/list");
+        return mav;
+    }
 }
