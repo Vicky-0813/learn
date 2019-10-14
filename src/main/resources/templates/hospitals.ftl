@@ -18,25 +18,32 @@
     <![endif]-->
   </head>
   <body>
-  <div class="col-ma-4">
-  <ul>
+   <div class="container">
+  <div class="row">
+  <div class="col-md-4">
+  <ul class="nav nav-pills nav-stacked">
   <li role="presentation" class="active"><a href="/hospital/list">列表</a></li>
   <li role="presentation"><a href="/hospital/add">新增</a></li>
+  <li role="presentation" class="active"><a href="#">修改</a></li>
   </ul>
   </div>
     <div class="col-md-8">
     <table class="table table-hover">
     <thead>
-    <th>id</th><th>姓名</th><th>phone</th><th>主治医生</th><th>disease</th>
+    <th>id</th><th>姓名</th><th>phone</th><th>主治医生</th><th>disease</th><th>删除</th><th>修改</th>
     </thead>
     <tbody>
     <#list hospitals as hospital>
     <tr>
     <td>${hospital.id} </td><td>${hospital.name} </td><td>${hospital.phone} </td><td>${hospital.doctor} </td><td>${hospital.disease} </td>
+    <td><a href="/hospital/delete/${hospital.id}">删除</a></td>
+    <td><a href="/hospital/modify/${hospital.id}">修改</a></td>
     </tr>
     </#list>
     </tbody>
     </table>
+    </div>
+    </div>
     </div>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>

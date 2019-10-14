@@ -22,4 +22,10 @@ public class HospitalService {
     public Hospital addHospital(Hospital hospital) {
         return hospitalDao.save(hospital);
     }
+    public void deleteHospital(Long id){
+        hospitalDao.deleteById(id);
+    }
+    public void modifyHospital(Hospital hospital) {
+        hospitalDao.save(hospital);
+    }
 }

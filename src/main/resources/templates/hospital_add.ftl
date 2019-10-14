@@ -20,10 +20,11 @@
   <body>
   <div class="container">
   <div class="row">
-  <div class="col-ma-4">
+  <div class="col-md-4">
   <ul class="nav nav-pills nav-stacked">
   <li role="presentation" ><a href="/hospital/list">列表</a></li>
   <li role="presentation" class="active"><a href="/hospital/add">新增</a></li>
+  
   </ul>
   </div>
     <div class="col-md-8">
