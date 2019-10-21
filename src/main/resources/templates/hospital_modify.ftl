@@ -22,8 +22,8 @@
      <div class="row">
        <div class="col-md-4">
          <ul class="nav nav-pills nav-stacked">
-           <li role="presentation"><a href="/user/list">列表</a></li>
-           <li role="presentation"><a href="/user/add">新增</a></li>
+           <li role="presentation"><a href="/hospital/list">列表</a></li>
+           <li role="presentation"><a href="/hospital/add">新增</a></li>
            <li role="presentation" class="active"><a href="#">修改</a></li>
          </ul>
        </div>

@@ -1,15 +1,17 @@
 package edu.hubu.learn.web;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.hubu.learn.entity.User;
-import edu.hubu.learn.service.UserService;
 import edu.hubu.learn.entity.Hospital;
 import edu.hubu.learn.service.HospitalService;
+import edu.hubu.learn.service.UserService;
 
 @Controller
 @RequestMapping("/hospital")
@@ -72,4 +74,21 @@ public class HospitalController {
          ModelAndView mav = new ModelAndView("redirect:/hospital/list");
          return mav;
      }
+      @RequestMapping("/search")
+    public ModelAndView searchHospital() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("hospital_search");
+        return mav;
+    }
+
+    @RequestMapping("/do_search")
+    public ModelAndView doSearchHospital(HttpServletRequest httpRequest) {
+        ModelAndView mav = new ModelAndView();
+        String keyword = httpRequest.getParameter("keyword");
+        List<Hospital> hospitals = hospitalService.searchHospitals(keyword);
+        mav.addObject("hospitals", hospitals);
+        mav.setViewName("hospitals");
+        return mav;
+    }
+    
 }
