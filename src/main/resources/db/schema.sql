@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS`hospital`;
 CREATE TABLE `hospital` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL comment '姓名',
+  `avatar_url` varchar(50000) DEFAULT NULL comment '头像',
   `phone` varchar(50) DEFAULT NULL,
   `register_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `enabled` tinyint(1) DEFAULT 1,

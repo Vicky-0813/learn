@@ -33,6 +33,10 @@
     <label for="name">用户名</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名">
     </div>
+    <div class="form-group">
+     <label for="password">头像</label>
+     <input type="file" class="form-control" id="avatar" name="avatar" placeholder="请选择图片">
+     </div>
      <div class="form-group">
      <label for="password">电话</label>
      <input type="text" class="form-control" id="phone" name="phone" placeholder="请输入手机号">

@@ -1,24 +1,30 @@
 package edu.hubu.learn.web;
+
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.hubu.learn.entity.Hospital;
 import edu.hubu.learn.service.HospitalService;
-import edu.hubu.learn.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
+@Slf4j
 @RequestMapping("/hospital")
 public class HospitalController {
 
-    @Autowired
-    private UserService userService;
+    
     @Autowired
     private HospitalService hospitalService;
 
@@ -64,12 +70,14 @@ public class HospitalController {
 
     @RequestMapping("/do_add")
     public ModelAndView doAddHospital(Hospital hospital) {
+        hospital.setAvatar("");
         hospitalService.addHospital(hospital);
         ModelAndView mav = new ModelAndView("redirect:/hospital/list");
         return mav;
     }
     @RequestMapping("/do_modify")
      public ModelAndView doModifyHospital(Hospital hospital) {
+         hospital.setAvatar("");
          hospitalService.addHospital(hospital);
          ModelAndView mav = new ModelAndView("redirect:/hospital/list");
          return mav;
@@ -90,5 +98,28 @@ public class HospitalController {
         mav.setViewName("hospitals");
         return mav;
     }
-    
+    @RequestMapping("/add_avatar/{id}")
+    public ModelAndView addHospitalAvatar(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("hospital", hospitalService.getHospital(id));
+        mav.setViewName("hospital_add_avatar");
+        return mav;
+    }
+
+    @RequestMapping("/do_add_avatar/{id}")
+    public ModelAndView doAddHospitalAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable Long id) {
+        try {
+            String fileName = file.getOriginalFilename();
+            String filePath = ResourceUtils.getURL("classpath:").getPath() + "../../../resources/main/static/";
+            File dest = new File(filePath + fileName);
+            log.info(dest.getAbsolutePath());
+            file.transferTo(dest);
+            Hospital hospital = hospitalService.getHospital(id);
+            hospital.setAvatar(fileName);
+            hospitalService.modifyHospital(hospital);
+        } catch (Exception e) {
+            log.error("upload avatar error", e.getMessage());
+        }
+        return new ModelAndView("redirect:/hospital/list");
+    }
 }

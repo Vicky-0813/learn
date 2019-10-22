@@ -6,5 +6,5 @@ INSERT INTO `user` (id, username, password, role) VALUES ('5', 'user3', '1234', 
 INSERT INTO `user` (id, username, password, role) VALUES ('6', 'user4', '1234', 'user');
 
 
-INSERT INTO `hospital`(name,phone,doctor,disease)VALUES('张三','23333','李四','感冒');
+INSERT INTO `hospital`(name,avatar_url,phone,doctor,disease)VALUES('张三','','23333','李四','感冒');
 COMMIT;
